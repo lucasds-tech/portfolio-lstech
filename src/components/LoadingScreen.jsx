@@ -91,6 +91,15 @@ export default function LoadingScreen({ onDone }) {
                 SILVA
               </motion.span>
             </div>
+
+            <motion.div
+              className="loader__role"
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1], delay: 0.65 }}
+            >
+              SOFTWARE ENGINNER
+            </motion.div>
           </div>
 
           <div className="loader__percentage">{progress}%</div>
