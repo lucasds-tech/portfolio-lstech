@@ -1,7 +1,7 @@
 /* LoadingScreen.jsx */
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import './LoadingScreen.css';
 
 /* Diamond star dots — same as hero */
 const LOADER_STARS = [
