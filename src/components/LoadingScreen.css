@@ -45,6 +45,72 @@
   line-height: 0.95;
 }
 
+/* LUCAS — shimmer gradient */
+.loader__name-first {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(64px, 14vw, 150px);
+  letter-spacing: clamp(8px, 2.5vw, 24px);
+  line-height: 0.95;
+  will-change: transform, opacity;
+  /* Dark mode shimmer: bright white sweep */
+  background: linear-gradient(
+    105deg,
+    #ffffff  0%,
+    #c0c0c0  18%,
+    #ffffff  35%,
+    #ffffff  50%,
+    #d4d4d4  68%,
+    #ffffff  82%,
+    #ffffff  100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: lucas-shimmer 4s linear infinite;
+  filter: drop-shadow(0 0 16px rgba(128,128,128,0.2));
+}
+/* Light mode shimmer: dark charcoal sweep — matches FULL-STACK / CAREER gray */
+[data-theme="light"] .loader__name-first {
+  background: linear-gradient(
+    105deg,
+    #212121  0%,
+    #616161  18%,
+    #212121  35%,
+    #212121  50%,
+    #424242  68%,
+    #212121  82%,
+    #212121  100%
+  );
+  background-size: 300% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* SILVA */
+.loader__name-last {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(64px, 14vw, 150px);
+  letter-spacing: clamp(8px, 2.5vw, 24px);
+  color: var(--text);
+  line-height: 0.95;
+  will-change: transform, opacity;
+  padding-left: clamp(8px, 2.5vw, 24px);
+  -webkit-text-stroke: 1px rgba(128,128,128,0.15);
+}
+
+.loader__role {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 2.2vw, 22px);
+  font-weight: 700;
+  letter-spacing: clamp(6px, 2vw, 14px);
+  color: var(--gray-400);
+  text-transform: uppercase;
+  will-change: transform, opacity;
+}
 
 .loader__percentage {
   position: absolute;
