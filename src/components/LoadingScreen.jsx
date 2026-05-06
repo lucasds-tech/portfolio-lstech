@@ -5,14 +5,14 @@ import './LoadingScreen.css';
 
 /* Diamond star dots — same as hero */
 const LOADER_STARS = [
-  { top: '-18px', left: '5%',  size: 10,  delay: 0,    dur: 3 },
-  { top: '-10px', left: '25%', size: 10,  delay: 10,  dur: 3 },
-  { top: '-20px', left: '55%', size: 10,  delay: 10,  dur: 3 },
-  { top:  '10%',  left: '92%', size: 10,  delay: 10,  dur: 3 },
-  { top:  '50%',  left: '-2%', size: 10,  delay: 10,  dur: 3 },
-  { top:  '80%',  left: '98%', size: 10,  delay: 10,  dur: 3 },
-  { top: '112%',  left: '15%', size: 10,  delay: 10,  dur: 3 },
-  { top: '108%',  left: '68%', size: 10,  delay: 10, dur: 3 },
+  { top: '-18px', left: '5%',  size: 7,  delay: 0,    dur: 2.8 },
+  { top: '-10px', left: '25%', size: 4,  delay: 0.6,  dur: 2.3 },
+  { top: '-20px', left: '55%', size: 9,  delay: 1.0,  dur: 3.1 },
+  { top:  '10%',  left: '92%', size: 5,  delay: 0.4,  dur: 2.5 },
+  { top:  '50%',  left: '-2%', size: 6,  delay: 0.9,  dur: 2.9 },
+  { top:  '80%',  left: '98%', size: 4,  delay: 1.3,  dur: 2.2 },
+  { top: '112%',  left: '15%', size: 5,  delay: 0.2,  dur: 2.7 },
+  { top: '108%',  left: '68%', size: 7,  delay: 0.75, dur: 3.0 },
 ];
 
 export default function LoadingScreen({ onDone }) {
