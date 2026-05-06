@@ -102,6 +102,26 @@
   -webkit-text-stroke: 1px rgba(128,128,128,0.15);
 }
 
+/* Diamond star dots on LUCAS */
+.loader__star {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.72);
+  animation: star-twinkle var(--dur, 2.8s) ease-in-out infinite,
+             star-drift    var(--dur, 2.8s) ease-in-out infinite;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+[data-theme="light"] .loader__star {
+  color: rgba(0, 0, 0, 0.55);
+}
+.loader__star svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .loader__role {
   font-family: var(--font-body);
   font-size: clamp(14px, 2.2vw, 22px);
