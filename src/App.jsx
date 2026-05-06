@@ -4,6 +4,20 @@ import { AnimatePresence } from 'framer-motion';
 
 
 import './styles/app.css';
+import { ThemeProvider } from './components/ThemeContext.jsx';
+import ParticleBackground from './components/ParticleBackground.jsx';
+import CursorEffect from './components/CursorEffect.jsx';
+import LoadingScreen from './components/LoadingScreen.jsx';
+import TopNav from './components/TopNav.jsx';
+import ScrollBar from './components/ScrollBar.jsx';
+import HeroSection from './components/HeroSection.jsx';
+import AboutSection from './components/AboutSection.jsx';
+import ProjectsSection from './components/ProjectsSection.jsx';
+import ExperienceSection from './components/ExperienceSection.jsx';
+import SkillsSection from './components/SkillsSection.jsx';
+import GetInTouch from './components/GetInTouch.jsx';
+import Footer from './components/Footer.jsx';
+
 
 export default function App() {
   const [loading, setLoading] = useState(true);
