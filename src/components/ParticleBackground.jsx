@@ -1,6 +1,5 @@
-/* ParticleBackground.jsx
-   Immersive animated canvas background - grid + floating nodes + beam traces
-   Basead at the itssharl.ee aesthetic (interactive, atmospheric, hacker-feel)
+/* Fundo de tela animado imersivo - grade + nós flutuantes + traços de feixes
+   Inspirado na estética do itssharl.ee (interativo, atmosférico)
 */
 import { useEffect, useRef } from 'react';
 import './ParticleBackground.css';
@@ -14,7 +13,7 @@ export default function ParticleBackground() {
     let animId;
     let mouse = { x: -9999, y: -9999 };
 
-    // ── Resize ───────────────────────────────────────────────
+    // - Resize ───────────────────────────────────────────────
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -22,14 +21,14 @@ export default function ParticleBackground() {
     resize();
     window.addEventListener('resize', resize);
 
-    // ── Mouse tracking ────────────────────────────────────────
+    // - Mouse tracking ────────────────────────────────────────
     const onMove = (e) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
     };
     window.addEventListener('mousemove', onMove);
 
-    // ── Nodes (floating dots) ─────────────────────────────────
+    // - Nodes (floating dots) ─────────────────────────────────
     const NODE_COUNT = 60;
     const nodes = Array.from({ length: NODE_COUNT }, () => ({
       x: Math.random() * window.innerWidth,
@@ -40,7 +39,7 @@ export default function ParticleBackground() {
       opacity: Math.random() * 0.5 + 0.1,
     }));
 
-    // ── Beams (sweeping lines) ────────────────────────────────
+    // - Beams (sweeping lines) ────────────────────────────────
     const BEAM_COUNT = 3;
     const beams = Array.from({ length: BEAM_COUNT }, (_, i) => ({
       x: Math.random() * window.innerWidth,
@@ -51,7 +50,7 @@ export default function ParticleBackground() {
       opacity: 0.06 + Math.random() * 0.04,
     }));
 
-    // ── Draw ─────────────────────────────────────────────────
+    // - Draw ─────────────────────────────────────────────────
     const GRID = 60;
     let tick = 0;
 
@@ -122,7 +121,7 @@ export default function ParticleBackground() {
         ctx.fill();
       });
 
-      // Connection lines between nearby nodes
+      // linhas de conexão entre nós próximos
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
           const dx = nodes[i].x - nodes[j].x;

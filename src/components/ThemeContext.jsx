@@ -1,9 +1,8 @@
-/* ThemeContext.jsx */
 import { createContext, useContext, useEffect, useState } from 'react';
 
 const ThemeContext = createContext(null);
 
-// Set the theme attribute immediately (before paint) to avoid flash
+// Define o atributo do tema imediatamente (antes da renderização) para evitar o efeito de flash
 function getInitialDark() {
   try {
     const stored = localStorage.getItem('theme');
@@ -15,13 +14,13 @@ function getInitialDark() {
 export function ThemeProvider({ children }) {
   const [dark, setDark] = useState(getInitialDark);
 
-  // Apply theme to <html> on every change
+  // Aplicar o tema a <html> sempre que houver uma alteração
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
     try { localStorage.setItem('theme', dark ? 'dark' : 'light'); } catch {}
   }, [dark]);
 
-  // Also set immediately on mount so CSS variables are correct before first paint
+  // Define também imediatamente no mount para que as variáveis CSS estejam corretas antes do primeiro render
   useState(() => {
     document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
   });

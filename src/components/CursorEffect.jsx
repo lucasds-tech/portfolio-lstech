@@ -1,4 +1,4 @@
-/* CursorEffect.jsx - Rounded pointer + MeshLine trailing effect */
+/* Ponteiro arredondado + efeito de rastro da MeshLine */
 import { useEffect, useRef, useState } from 'react';
 import './CursorEffect.css';
 
@@ -6,7 +6,7 @@ function isTouchDevice() {
   return window.matchMedia('(hover: none), (pointer: coarse)').matches;
 }
 
-const NUM_POINTS = 32;   // more points = longer trail
+const NUM_POINTS = 32;   // mais pontos = percurso mais longo
 const NUM_LINES  = 4;
 
 function makeLines() {
@@ -44,7 +44,7 @@ export default function CursorEffect() {
     window.addEventListener('mousemove', onMove);
 
     const lines = makeLines();
-    // Init all points
+    // Inicio de todos os pontos
     lines.forEach(line => {
       line.points = Array.from({ length: NUM_POINTS }, () => ({
         x: mouse.x + line.ox,
@@ -52,10 +52,10 @@ export default function CursorEffect() {
       }));
     });
 
-    // Detect theme
+    // Detecção de tema
     const isDark = () => document.documentElement.getAttribute('data-theme') !== 'light';
 
-    // Width taper: thin at tail, full in middle, thin at head
+    //  Formato cnico: estreito na cauda, largo no meio, estreito na cabeça
     function widthAt(t) {
       const edge = 0.15;
       if (t < edge) return 2.8 * (t / edge);
@@ -63,7 +63,7 @@ export default function CursorEffect() {
       return 2.8;
     }
 
-    // Draw one tapered ribbon
+    //Desenhar uma fita cônica
     function drawMeshLine(points, dark) {
       const n = points.length;
       if (n < 2) return;
@@ -77,7 +77,7 @@ export default function CursorEffect() {
         const nx = -dy / len;
         const ny =  dx / len;
         const w = widthAt(t);
-        // alpha: strong in the body, fades at the tail
+        // alpha: forte no corpo
         const alpha = dark
           ? (0.12 + (1 - t) * 0.38)
           : (0.10 + (1 - t) * 0.45);
@@ -93,7 +93,7 @@ export default function CursorEffect() {
       }
     }
 
-    // Draw cursor dot — large solid circle
+    // Desenhar o ponto do cursor - um círculo grande e preenchido
     function drawCursor(x, y, dark) {
       const r = 7;
       ctx.beginPath();
@@ -113,7 +113,6 @@ export default function CursorEffect() {
         const targetX = mouse.x + line.ox;
         const targetY = mouse.y + line.oy;
 
-        // Spring physics on head
         const head = line.points[0];
         const fx = (targetX - head.x) * line.spring;
         const fy = (targetY - head.y) * line.spring;
@@ -122,7 +121,7 @@ export default function CursorEffect() {
         head.x += line.vx;
         head.y += line.vy;
 
-        // Each point follows the one ahead — slower lerp = longer persistence
+        // Cada ponto segue um ponto anterior - uma interpolação mais lenta = maior persistência
         for (let i = 1; i < NUM_POINTS; i++) {
           line.points[i].x += (line.points[i - 1].x - line.points[i].x) * 0.28;
           line.points[i].y += (line.points[i - 1].y - line.points[i].y) * 0.28;

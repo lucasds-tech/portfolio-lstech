@@ -38,7 +38,7 @@
   gap: 0;
 }
 
-/* LUCAS wrapper — relative for star positioning */
+/* LUCAS wrapper - relativo para o posicionamento da estrela */
 .loader__name-first-wrap {
   position: relative;
   display: block;
@@ -53,7 +53,7 @@
   letter-spacing: clamp(8px, 2.5vw, 24px);
   line-height: 0.95;
   will-change: transform, opacity;
-  /* Dark mode shimmer: bright white sweep */
+  /* Dark mode shimmer: varredura em branco brilhante */
   background: linear-gradient(
     105deg,
     #ffffff  0%,
@@ -71,7 +71,7 @@
   animation: lucas-shimmer 4s linear infinite;
   filter: drop-shadow(0 0 16px rgba(128,128,128,0.2));
 }
-/* Light mode shimmer: dark charcoal sweep — matches FULL-STACK / CAREER gray */
+/* Light mode shimmer: dark charcoal sweep*/
 [data-theme="light"] .loader__name-first {
   background: linear-gradient(
     105deg,

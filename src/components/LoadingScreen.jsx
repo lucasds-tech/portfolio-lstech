@@ -1,9 +1,8 @@
-/* LoadingScreen.jsx */
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './LoadingScreen.css';
 
-/* Diamond star dots — same as hero */
+/* Diamond star dots - tipo um heroi hehe */
 const LOADER_STARS = [
   { top: '-18px', left: '5%',  size: 7,  delay: 0,    dur: 2.8 },
   { top: '-10px', left: '25%', size: 4,  delay: 0.6,  dur: 2.3 },

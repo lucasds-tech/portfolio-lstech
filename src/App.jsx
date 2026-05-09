@@ -1,4 +1,3 @@
-/* App.jsx */
 import { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
