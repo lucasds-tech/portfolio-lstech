@@ -1,0 +1,10 @@
+.footer {
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid var(--gray-800);
+  padding: 28px var(--section-px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
