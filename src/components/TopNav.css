@@ -27,3 +27,66 @@
 .topnav__slot-left   { display: flex; align-items: center; justify-content: flex-start; overflow: visible; }
 .topnav__slot-center { display: flex; align-items: center; justify-content: center; }
 .topnav__slot-right  { display: flex; align-items: center; justify-content: flex-end; }
+
+/* ---    NAV LINKS     --- */
+.topnav__links {
+  position: relative;
+  display: flex;
+  list-style: none;
+  align-items: center;
+  padding: 5px;
+  background: rgba(128,128,128,0.07);
+  border: 1px solid rgba(128,128,128,0.2);
+  border-radius: 100px;
+  backdrop-filter: blur(12px);
+}
+.topnav__links-hover {
+  position: absolute;
+  top: 5px;
+  height: calc(100% - 10px);
+  background: rgba(128,128,128,0.12);
+  border-radius: 100px;
+  pointer-events: none;
+  transition: left 0.22s cubic-bezier(0.16,1,0.3,1), width 0.22s cubic-bezier(0.16,1,0.3,1), opacity 0.16s ease;
+}
+.topnav__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  border-radius: 100px;
+  white-space: nowrap;
+  transition: color 0.2s;
+  z-index: 1;
+}
+.topnav__link:hover   { color: var(--gray-200); }
+.topnav__link--active { color: var(--text); }
+
+/* Tubelight */
+.topnav__tubelight {
+  position: absolute; inset: 0;
+  border-radius: 100px;
+  background: rgba(128,128,128,0.1);
+  pointer-events: none;
+  z-index: -1;
+  overflow: visible;
+}
+.topnav__tube-bar {
+  position: absolute;
+  top: -1px; left: 50%;
+  transform: translateX(-50%);
+  width: 40%; height: 2px;
+  background: var(--text);
+  opacity: 0.85;
+  border-radius: 100px;
+}
+.topnav__tube-halo { position: absolute; left: 50%; transform: translateX(-50%); border-radius: 50%; pointer-events: none; }
+.topnav__tube-halo--wide  { top: -10px; width: 72px; height: 16px; background: rgba(128,128,128,0.1); filter: blur(10px); }
+.topnav__tube-halo--mid   { top: -7px;  width: 48px; height: 10px; background: rgba(128,128,128,0.16); filter: blur(6px); }
+.topnav__tube-halo--tight { top: -4px;  width: 26px; height: 6px;  background: rgba(128,128,128,0.24); filter: blur(3px); }
