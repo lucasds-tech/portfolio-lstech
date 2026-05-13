@@ -1,0 +1,17 @@
+.scrollbar-track {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: transparent;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.scrollbar-fill {
+  height: 100%;
+  width: 100%;                     /* sempre full width */
+  background: var(--text);
+  transform: scaleX(0);            /* controlado via JS */
+  transform-origin: left center;
+  will-change: transform;
+}
