@@ -3,6 +3,44 @@ import { useRef, useEffect, useState } from 'react';
 import { motion, useInView, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import './AboutSection.css';
 
+const STATS = [
+  { label: 'YEARS EXP',     target: 1,    suffix: ''  },
+  { label: 'CONTRIBUTIONS', target: 500, suffix: '+', formatK: true },
+  { label: 'PROJECTS',      target: 9,    suffix: '+' },
+];
+
+function CountUp({ target, suffix, formatK, active }) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!active) return;
+    let start = 0;
+    const stepTime = 16;
+    const totalSteps = 1400 / stepTime;
+    const increment = target / totalSteps;
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) { setCount(target); clearInterval(timer); }
+      else setCount(Math.floor(start));
+    }, stepTime);
+    return () => clearInterval(timer);
+  }, [active, target]);
+
+  const formatted = formatK
+    ? count >= 1000 ? `${Math.floor(count / 1000)}K+` : String(count)
+    : `${count}${suffix}`;
+
+  return <span className="astat__number">{formatted}</span>;
+}
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
+};
+const fadeUpScale = {
+  hidden: { opacity: 0, y: 24, scale: 0.88 },
+  show:   { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
+};
+
 /* Card 3D com efeito de inclinação
 apenas efeito de paralaxe com o mouse no desktop, sem escala ao passar o mouse */
 function TiltPhoto() {
@@ -96,16 +134,17 @@ export default function AboutSection() {
           </div>
           <TiltPhoto />
         </div>
+
+        {/* Stats */}
+        <motion.div className="about__stats" variants={fadeUp}>
+          {STATS.map(({ target, suffix, formatK, label }) => (
+            <div key={label} className="astat">
+              <CountUp target={target} suffix={suffix} formatK={formatK} active={inView} />
+              <span className="astat__label">{label}</span>
+            </div>
+          ))}
+        </motion.div>
       </motion.div>
     </div>
   );
 }
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
-};
-const fadeUpScale = {
-  hidden: { opacity: 0, y: 24, scale: 0.88 },
-  show:   { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
-};
